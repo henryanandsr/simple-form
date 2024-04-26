@@ -11,8 +11,8 @@ const pool = new Pool({
 
 var app = express();
 const cors = require('cors');
-// set localhost to access the server
-app.use(cors({ origin: 'http://localhost:3000' }));
+// set localhost to access the server from env
+app.use(cors({ origin: 'https://simple-form-tau.vercel.app' }));
 app.use(express.json());
 app.listen(5001, () => {
     console.log("Server running on port 5001");
