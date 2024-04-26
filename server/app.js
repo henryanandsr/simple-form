@@ -1,8 +1,9 @@
 var express = require("express");
+require('dotenv').config()
 
 const { Pool } = require('pg');
 const pool = new Pool({
-    connectionString: 'postgres://ayoxnjra:EKG1nd2_1xN-4BIt6cG8wdEi-1djs_JX@rain.db.elephantsql.com/ayoxnjra',
+    connectionString: process.env.DB_URL,
     ssl: {
         rejectUnauthorized: false
     }
@@ -12,7 +13,11 @@ const pool = new Pool({
 var app = express();
 const cors = require('cors');
 // set localhost to access the server from env
-app.use(cors({ origin: 'https://simple-form-tau.vercel.app' }));
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    optionsSuccessStatus: 200
+  }
+app.use(cors(corsOptions));  
 app.use(express.json());
 app.listen(5001, () => {
     console.log("Server running on port 5001");
