@@ -19,7 +19,8 @@ const corsOptions = {
   }
 app.use(cors(corsOptions));  
 app.use(express.json());
-app.listen(5001, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0", () => {
     console.log("Server running on port 5001");
 });
 
